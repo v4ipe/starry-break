@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Starry Break - Cyber-Anime Monochrome Theme
+   Starry Break - Legendary Cyber-Anime Monochrome Theme
    Designed for PS4 WebKit Browser & Modern Desktops
    RTL Arabic Layout | AGPLv3 / MIT Compliance
    ========================================================================== */
@@ -44,7 +44,7 @@ html, body {
   overflow-x: hidden;
 }
 
-/* Fixed Background Image with Dark Overlay */
+/* Fixed Background Image with Elegant Dark Overlay */
 body {
   background-image: url('img/bg.jpg');
   background-repeat: no-repeat;
@@ -54,12 +54,13 @@ body {
   position: relative;
 }
 
+/* تعتيم خلفي متدرج لضمان وضوح النص وعدم تشتيت العين */
 .bg-overlay {
   position: fixed;
   inset: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.65);
+  background: radial-gradient(circle at center, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.85) 100%);
   pointer-events: none;
   z-index: 1;
 }
@@ -77,26 +78,32 @@ body {
 }
 
 /* ==========================================================================
-   Header & Anime Logo
+   Header & Anime Logo (Clean & Elegant - No annoying glow)
    ========================================================================== */
 
 .header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: 16px;
 }
 
 .logo-container {
   position: relative;
-  width: 130px;
-  height: 130px;
+  width: 140px;
+  height: 140px;
   border-radius: 50%;
   overflow: hidden;
-  border: 2px solid var(--color-white);
-  box-shadow: var(--glow-soft);
-  animation: logoPulse 3.5s ease-in-out infinite;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  /* ظل ناعم جداً بدل التوهج المزعج */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), inset 0 0 20px rgba(0,0,0,0.5);
   background: var(--color-black);
+  transition: transform 0.4s ease, border-color 0.4s ease;
+}
+
+.logo-container:hover {
+  transform: scale(1.05);
+  border-color: #ffffff;
 }
 
 .anime-logo {
@@ -107,35 +114,22 @@ body {
   display: block;
 }
 
-@keyframes logoPulse {
-  0%, 100% {
-    transform: scale(1);
-    box-shadow: 0 0 18px rgba(255, 255, 255, 0.45);
-    border-color: rgba(255, 255, 255, 0.85);
-  }
-  50% {
-    transform: scale(1.035);
-    box-shadow: 0 0 35px rgba(255, 255, 255, 0.9);
-    border-color: #ffffff;
-  }
-}
-
 .main-title {
   font-family: var(--font-heading);
-  font-size: 42px;
+  font-size: 46px;
   font-weight: 700;
   letter-spacing: 2px;
   color: var(--color-white);
-  text-shadow: 0 0 14px rgba(255, 255, 255, 0.7), 0 0 30px rgba(255, 255, 255, 0.35);
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.9);
   margin-top: 4px;
 }
 
 .subtitle {
   font-family: var(--font-heading);
-  font-size: 19px;
-  color: var(--color-text-dim);
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.8);
   letter-spacing: 1px;
-  text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
 }
 
 /* ==========================================================================
@@ -150,6 +144,13 @@ body {
   margin: 30px 0;
   width: 100%;
   max-width: 480px;
+  /* صندوق زجاجي خفيف يحيط بالعناصر ليعطي فخامة */
+  padding: 40px 20px;
+  background: rgba(10, 10, 12, 0.3);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 /* 5-Second Circular Countdown Stage */
@@ -169,8 +170,8 @@ body {
 
 .svg-timer-wrap {
   position: relative;
-  width: 160px;
-  height: 160px;
+  width: 180px;
+  height: 180px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -179,54 +180,54 @@ body {
 .timer-svg {
   width: 100%;
   height: 100%;
-  transform: rotate(-90deg); /* Start depletion at 12 o'clock */
+  transform: rotate(-90deg);
 }
 
 .timer-bg-circle {
   fill: none;
-  stroke: rgba(255, 255, 255, 0.12);
-  stroke-width: 5;
+  stroke: rgba(255, 255, 255, 0.1);
+  stroke-width: 4;
 }
 
 .timer-progress-circle {
   fill: none;
   stroke: var(--color-white);
-  stroke-width: 5;
+  stroke-width: 6;
   stroke-linecap: round;
   stroke-dasharray: 427.26;
   stroke-dashoffset: 0;
   transition: stroke-dashoffset 1s linear;
-  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.8));
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.9));
 }
 
 .timer-arabic-num {
   position: absolute;
   font-family: var(--font-heading);
-  font-size: 56px;
+  font-size: 68px;
   font-weight: 700;
   color: var(--color-white);
-  text-shadow: 0 0 16px rgba(255, 255, 255, 0.9);
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
   line-height: 1;
   user-select: none;
 }
 
 .timer-label {
-  margin-top: 18px;
-  font-size: 20px;
+  margin-top: 24px;
+  font-size: 22px;
   font-weight: 500;
-  letter-spacing: 1.5px;
+  letter-spacing: 2px;
   color: var(--color-white);
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
   animation: pulseText 2s infinite ease-in-out;
 }
 
 @keyframes pulseText {
-  0%, 100% { opacity: 0.85; }
-  50% { opacity: 1; text-shadow: 0 0 18px rgba(255, 255, 255, 0.9); }
+  0%, 100% { opacity: 0.7; transform: scale(0.98); }
+  50% { opacity: 1; transform: scale(1.02); text-shadow: 0 0 15px rgba(255, 255, 255, 0.6); }
 }
 
 .cache-status {
-  margin-top: 8px;
+  margin-top: 10px;
   font-size: 13px;
   color: var(--color-text-muted);
   min-height: 18px;
@@ -240,7 +241,7 @@ body {
   transform: translateY(18px);
   flex-direction: column;
   align-items: center;
-  gap: 24px;
+  gap: 30px;
   transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
@@ -252,21 +253,17 @@ body {
 
 .anime-phrase {
   font-family: var(--font-heading);
-  font-size: 38px;
+  font-size: 42px;
   font-weight: 700;
   letter-spacing: 2px;
   color: var(--color-white);
-  text-shadow: 0 0 12px #ffffff, 0 0 25px rgba(255, 255, 255, 0.85), 0 0 45px rgba(255, 255, 255, 0.5);
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.6), 0 0 35px rgba(255, 255, 255, 0.3);
   animation: glowCycle 3s infinite alternate ease-in-out;
 }
 
 @keyframes glowCycle {
-  0% {
-    text-shadow: 0 0 10px #ffffff, 0 0 20px rgba(255, 255, 255, 0.7);
-  }
-  100% {
-    text-shadow: 0 0 18px #ffffff, 0 0 35px rgba(255, 255, 255, 0.95), 0 0 55px rgba(255, 255, 255, 0.7);
-  }
+  0% { text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); }
+  100% { text-shadow: 0 0 25px rgba(255, 255, 255, 0.9), 0 0 45px rgba(255, 255, 255, 0.4); }
 }
 
 /* Cyber-Anime Button */
@@ -275,34 +272,34 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 14px 44px;
+  padding: 16px 52px;
   font-family: var(--font-ui);
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 700;
-  color: var(--color-white);
-  background: rgba(10, 12, 16, 0.85);
-  border: 1.5px solid var(--color-white);
+  color: var(--color-black);
+  background: var(--color-white);
+  border: none;
   cursor: pointer;
   outline: none;
   text-decoration: none;
   letter-spacing: 1.5px;
-  clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px);
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.35);
-  transition: all 0.3s ease;
+  clip-path: polygon(16px 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%, 0 16px);
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.4);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   user-select: none;
 }
 
 .cyber-btn:hover,
 .cyber-btn:focus {
-  background: var(--color-white);
-  color: var(--color-black);
-  box-shadow: var(--glow-strong), 0 0 45px rgba(255, 255, 255, 0.6);
-  transform: translateY(-2px);
+  background: transparent;
+  color: var(--color-white);
+  box-shadow: 0 0 35px rgba(255, 255, 255, 0.8), inset 0 0 0 2px var(--color-white);
+  transform: translateY(-3px);
 }
 
 .cyber-btn:active {
   transform: translateY(1px);
-  box-shadow: var(--glow-soft);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
 }
 
 /* Payload Selector */
@@ -310,15 +307,15 @@ body {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-top: 26px;
-  padding: 6px 14px;
-  background: rgba(14, 16, 22, 0.65);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 20px;
+  margin-top: 30px;
+  padding: 8px 16px;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 30px;
 }
 
 .payload-label {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--color-text-muted);
 }
 
@@ -333,11 +330,11 @@ body {
 }
 
 .payload-pill {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600;
   color: var(--color-text-dim);
-  padding: 4px 12px;
-  border-radius: 14px;
+  padding: 6px 16px;
+  border-radius: 20px;
   border: 1px solid transparent;
   transition: all 0.25s ease;
 }
@@ -345,7 +342,7 @@ body {
 .payload-opt input:checked + .payload-pill {
   background: var(--color-white);
   color: var(--color-black);
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
 }
 
 /* ==========================================================================
@@ -356,7 +353,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   margin-top: auto;
   padding-top: 20px;
 }
@@ -365,16 +362,16 @@ body {
   font-size: 14px;
   color: var(--color-text-dim);
   letter-spacing: 0.5px;
-  text-shadow: 0 0 6px rgba(0, 0, 0, 0.9);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 1);
 }
 
 .credits-btn {
   background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   color: var(--color-text-dim);
   font-family: var(--font-ui);
   font-size: 13px;
-  padding: 5px 14px;
+  padding: 6px 16px;
   border-radius: 4px;
   cursor: pointer;
   transition: all 0.25s ease;
@@ -384,12 +381,12 @@ body {
 .credits-btn:focus {
   border-color: var(--color-white);
   color: var(--color-white);
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.35);
-  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 /* ==========================================================================
-   Glassmorphism Credits Modal
+   Glassmorphism Credits Modal (Keep as requested)
    ========================================================================== */
 
 .modal-backdrop {
@@ -397,7 +394,7 @@ body {
   inset: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.82);
+  background: rgba(0, 0, 0, 0.85);
   z-index: 100;
   display: flex;
   align-items: center;
@@ -420,12 +417,12 @@ body {
   max-height: 85vh;
   display: flex;
   flex-direction: column;
-  background: rgba(11, 13, 17, 0.92);
-  -webkit-backdrop-filter: blur(18px);
-  backdrop-filter: blur(18px);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  border-radius: 8px;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.95), 0 0 35px rgba(255, 255, 255, 0.08);
+  background: rgba(11, 13, 17, 0.95);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.95), 0 0 35px rgba(255, 255, 255, 0.05);
   overflow: hidden;
   text-align: right;
   direction: rtl;
@@ -443,7 +440,7 @@ body {
   justify-content: space-between;
   padding: 16px 20px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-  background: rgba(18, 21, 28, 0.85);
+  background: rgba(18, 21, 28, 0.9);
 }
 
 .modal-title {
@@ -483,7 +480,7 @@ body {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.1);
   padding: 14px;
-  border-radius: 6px;
+  border-radius: 8px;
 }
 
 .credit-category {
@@ -514,7 +511,7 @@ body {
   background: rgba(255, 255, 255, 0.1);
   color: #ffffff;
   padding: 1px 6px;
-  border-radius: 3px;
+  border-radius: 4px;
   font-size: 13px;
   direction: ltr;
   display: inline-block;
@@ -543,7 +540,7 @@ body {
   border-top: 1px solid rgba(255, 255, 255, 0.12);
   display: flex;
   justify-content: flex-end;
-  background: rgba(14, 16, 22, 0.85);
+  background: rgba(14, 16, 22, 0.9);
 }
 
 .modal-dismiss-btn {
@@ -553,7 +550,7 @@ body {
   font-family: var(--font-ui);
   font-size: 14px;
   padding: 6px 20px;
-  border-radius: 4px;
+  border-radius: 6px;
   cursor: pointer;
   transition: all 0.2s ease;
 }
@@ -569,17 +566,17 @@ body {
 
 @media (max-width: 600px) {
   .main-title {
-    font-size: 34px;
+    font-size: 36px;
   }
   .anime-phrase {
-    font-size: 30px;
+    font-size: 32px;
   }
   .cyber-btn {
-    font-size: 19px;
-    padding: 12px 34px;
+    font-size: 20px;
+    padding: 14px 40px;
   }
   .logo-container {
-    width: 110px;
-    height: 110px;
+    width: 120px;
+    height: 120px;
   }
 }

@@ -1,0 +1,585 @@
+/* ==========================================================================
+   Starry Break - Cyber-Anime Monochrome Theme
+   Designed for PS4 WebKit Browser & Modern Desktops
+   RTL Arabic Layout | AGPLv3 / MIT Compliance
+   ========================================================================== */
+
+:root {
+  --color-black: #000000;
+  --color-dark-bg: #07080a;
+  --color-surface: rgba(14, 16, 22, 0.88);
+  --color-surface-hover: rgba(26, 30, 40, 0.95);
+  --color-border: rgba(255, 255, 255, 0.22);
+  --color-border-bright: #ffffff;
+  --color-white: #ffffff;
+  --color-text-dim: #cfd3dc;
+  --color-text-muted: #838a99;
+  --glow-soft: 0 0 16px rgba(255, 255, 255, 0.45);
+  --glow-strong: 0 0 28px rgba(255, 255, 255, 0.85);
+  --glow-intense: 0 0 45px rgba(255, 255, 255, 0.95);
+
+  --font-heading: 'Aref Ruqaa', 'Amiri', 'Traditional Arabic', serif;
+  --font-ui: 'Tajawal', 'Cairo', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-mono: 'Consolas', 'DejaVu Sans Mono', monospace;
+
+  --timer-circumference: 427.26; /* 2 * PI * 68 */
+}
+
+/* Reset & Box Sizing */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  font-family: var(--font-ui);
+  direction: rtl;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+/* Fixed Background Image with Dark Overlay */
+body {
+  background-image: url('img/bg.jpg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-attachment: fixed;
+  position: relative;
+}
+
+.bg-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.65);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Main Layout Shell */
+.site-container {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 100vh;
+  padding: 40px 20px 24px;
+}
+
+/* ==========================================================================
+   Header & Anime Logo
+   ========================================================================== */
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-container {
+  position: relative;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid var(--color-white);
+  box-shadow: var(--glow-soft);
+  animation: logoPulse 3.5s ease-in-out infinite;
+  background: var(--color-black);
+}
+
+.anime-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+@keyframes logoPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 18px rgba(255, 255, 255, 0.45);
+    border-color: rgba(255, 255, 255, 0.85);
+  }
+  50% {
+    transform: scale(1.035);
+    box-shadow: 0 0 35px rgba(255, 255, 255, 0.9);
+    border-color: #ffffff;
+  }
+}
+
+.main-title {
+  font-family: var(--font-heading);
+  font-size: 42px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--color-white);
+  text-shadow: 0 0 14px rgba(255, 255, 255, 0.7), 0 0 30px rgba(255, 255, 255, 0.35);
+  margin-top: 4px;
+}
+
+.subtitle {
+  font-family: var(--font-heading);
+  font-size: 19px;
+  color: var(--color-text-dim);
+  letter-spacing: 1px;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+}
+
+/* ==========================================================================
+   Main Action Panel & Stages
+   ========================================================================== */
+
+.main-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 30px 0;
+  width: 100%;
+  max-width: 480px;
+}
+
+/* 5-Second Circular Countdown Stage */
+.countdown-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.countdown-box.hidden {
+  opacity: 0;
+  transform: scale(0.92);
+  pointer-events: none;
+  display: none;
+}
+
+.svg-timer-wrap {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timer-svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg); /* Start depletion at 12 o'clock */
+}
+
+.timer-bg-circle {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.12);
+  stroke-width: 5;
+}
+
+.timer-progress-circle {
+  fill: none;
+  stroke: var(--color-white);
+  stroke-width: 5;
+  stroke-linecap: round;
+  stroke-dasharray: 427.26;
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 1s linear;
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.8));
+}
+
+.timer-arabic-num {
+  position: absolute;
+  font-family: var(--font-heading);
+  font-size: 56px;
+  font-weight: 700;
+  color: var(--color-white);
+  text-shadow: 0 0 16px rgba(255, 255, 255, 0.9);
+  line-height: 1;
+  user-select: none;
+}
+
+.timer-label {
+  margin-top: 18px;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  color: var(--color-white);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  animation: pulseText 2s infinite ease-in-out;
+}
+
+@keyframes pulseText {
+  0%, 100% { opacity: 0.85; }
+  50% { opacity: 1; text-shadow: 0 0 18px rgba(255, 255, 255, 0.9); }
+}
+
+.cache-status {
+  margin-top: 8px;
+  font-size: 13px;
+  color: var(--color-text-muted);
+  min-height: 18px;
+  letter-spacing: 0.5px;
+}
+
+/* Post-Countdown Showcase & Button */
+.ready-box {
+  display: none;
+  opacity: 0;
+  transform: translateY(18px);
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.ready-box.active {
+  display: flex;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.anime-phrase {
+  font-family: var(--font-heading);
+  font-size: 38px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--color-white);
+  text-shadow: 0 0 12px #ffffff, 0 0 25px rgba(255, 255, 255, 0.85), 0 0 45px rgba(255, 255, 255, 0.5);
+  animation: glowCycle 3s infinite alternate ease-in-out;
+}
+
+@keyframes glowCycle {
+  0% {
+    text-shadow: 0 0 10px #ffffff, 0 0 20px rgba(255, 255, 255, 0.7);
+  }
+  100% {
+    text-shadow: 0 0 18px #ffffff, 0 0 35px rgba(255, 255, 255, 0.95), 0 0 55px rgba(255, 255, 255, 0.7);
+  }
+}
+
+/* Cyber-Anime Button */
+.cyber-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 44px;
+  font-family: var(--font-ui);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--color-white);
+  background: rgba(10, 12, 16, 0.85);
+  border: 1.5px solid var(--color-white);
+  cursor: pointer;
+  outline: none;
+  text-decoration: none;
+  letter-spacing: 1.5px;
+  clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.35);
+  transition: all 0.3s ease;
+  user-select: none;
+}
+
+.cyber-btn:hover,
+.cyber-btn:focus {
+  background: var(--color-white);
+  color: var(--color-black);
+  box-shadow: var(--glow-strong), 0 0 45px rgba(255, 255, 255, 0.6);
+  transform: translateY(-2px);
+}
+
+.cyber-btn:active {
+  transform: translateY(1px);
+  box-shadow: var(--glow-soft);
+}
+
+/* Payload Selector */
+.payload-selector {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 26px;
+  padding: 6px 14px;
+  background: rgba(14, 16, 22, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+}
+
+.payload-label {
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+.payload-opt {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.payload-opt input {
+  display: none;
+}
+
+.payload-pill {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text-dim);
+  padding: 4px 12px;
+  border-radius: 14px;
+  border: 1px solid transparent;
+  transition: all 0.25s ease;
+}
+
+.payload-opt input:checked + .payload-pill {
+  background: var(--color-white);
+  color: var(--color-black);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* ==========================================================================
+   Footer & Copyright
+   ========================================================================== */
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 20px;
+}
+
+.copyright {
+  font-size: 14px;
+  color: var(--color-text-dim);
+  letter-spacing: 0.5px;
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.9);
+}
+
+.credits-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: var(--color-text-dim);
+  font-family: var(--font-ui);
+  font-size: 13px;
+  padding: 5px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.credits-btn:hover,
+.credits-btn:focus {
+  border-color: var(--color-white);
+  color: var(--color-white);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* ==========================================================================
+   Glassmorphism Credits Modal
+   ========================================================================== */
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.82);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-backdrop.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-card {
+  position: relative;
+  width: 100%;
+  max-width: 640px;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  background: rgba(11, 13, 17, 0.92);
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 8px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.95), 0 0 35px rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  text-align: right;
+  direction: rtl;
+  transform: scale(0.94);
+  transition: transform 0.3s ease;
+}
+
+.modal-backdrop.open .modal-card {
+  transform: scale(1);
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(18, 21, 28, 0.85);
+}
+
+.modal-title {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  color: var(--color-white);
+  letter-spacing: 0.5px;
+}
+
+.modal-close {
+  background: transparent;
+  border: none;
+  color: var(--color-text-muted);
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 6px;
+  transition: color 0.2s ease;
+}
+
+.modal-close:hover,
+.modal-close:focus {
+  color: var(--color-white);
+}
+
+.modal-body {
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.credit-block {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 14px;
+  border-radius: 6px;
+}
+
+.credit-category {
+  font-family: var(--font-heading);
+  font-size: 16px;
+  color: var(--color-white);
+  margin-bottom: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  padding-bottom: 4px;
+}
+
+.credit-row {
+  margin-bottom: 6px;
+  color: var(--color-text-dim);
+}
+
+.credits-list {
+  list-style: square inside;
+  color: var(--color-text-dim);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.credits-list code,
+.credit-block code {
+  font-family: var(--font-mono);
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  padding: 1px 6px;
+  border-radius: 3px;
+  font-size: 13px;
+  direction: ltr;
+  display: inline-block;
+}
+
+.license-notice {
+  background: rgba(20, 20, 26, 0.6);
+  border-right: 3px solid var(--color-white);
+}
+
+.license-text {
+  color: var(--color-text-dim);
+  margin-bottom: 6px;
+}
+
+.disclaimer-text {
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--color-text-muted);
+  border-top: 1px dashed rgba(255, 255, 255, 0.12);
+  padding-top: 8px;
+}
+
+.modal-footer {
+  padding: 12px 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  justify-content: flex-end;
+  background: rgba(14, 16, 22, 0.85);
+}
+
+.modal-dismiss-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--color-white);
+  color: var(--color-white);
+  font-family: var(--font-ui);
+  font-size: 14px;
+  padding: 6px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.modal-dismiss-btn:hover {
+  background: var(--color-white);
+  color: var(--color-black);
+}
+
+/* ==========================================================================
+   Responsive Tuning (Desktop & PS4 TV Over-scan)
+   ========================================================================== */
+
+@media (max-width: 600px) {
+  .main-title {
+    font-size: 34px;
+  }
+  .anime-phrase {
+    font-size: 30px;
+  }
+  .cyber-btn {
+    font-size: 19px;
+    padding: 12px 34px;
+  }
+  .logo-container {
+    width: 110px;
+    height: 110px;
+  }
+}

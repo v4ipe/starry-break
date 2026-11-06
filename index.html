@@ -1,0 +1,138 @@
+<!doctype html>
+<html class="landing" dir="rtl" lang="ar">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Starry Break</title>
+    <!-- Google Fonts for Arabic Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Aref+Ruqaa:wght@400;700&family=Cairo:wght@300;400;600;700;900&family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Dark overlay for readability -->
+    <div class="bg-overlay"></div>
+
+    <div class="site-container">
+      <!-- Top: Anime Logo Avatar & Titles -->
+      <header class="header">
+        <div class="logo-container">
+          <img src="img/logo.jpg" alt="Starry Break Logo" class="anime-logo" />
+        </div>
+        <h1 class="main-title">Starry Break</h1>
+        <p class="subtitle">بواسطة نصرو بن عياد</p>
+      </header>
+
+      <!-- Main Action Area -->
+      <main class="main-panel">
+        <!-- 5-Second Circular SVG Countdown -->
+        <div id="countdownBox" class="countdown-box">
+          <div class="svg-timer-wrap">
+            <svg class="timer-svg" viewBox="0 0 160 160">
+              <circle class="timer-bg-circle" cx="80" cy="80" r="68"></circle>
+              <circle id="timerCircle" class="timer-progress-circle" cx="80" cy="80" r="68"></circle>
+            </svg>
+            <div id="timerNum" class="timer-arabic-num">٥</div>
+          </div>
+          <p id="timerLabel" class="timer-label">جاري التجهيز...</p>
+          <p id="cacheStatus" class="cache-status" aria-live="polite"></p>
+        </div>
+
+        <!-- Post-Countdown Showcase & Start Button -->
+        <div id="readyBox" class="ready-box">
+          <h2 class="anime-phrase">لا حدود... استمتع</h2>
+          <button id="startBtn" class="cyber-btn" type="button">
+            <span class="cyber-btn-cut"></span>
+            <span class="cyber-btn-text">ابدأ الآن</span>
+          </button>
+          <p id="autoNotice" class="auto-notice">لم تقم بالضغط. سيتم التحميل تلقائياً بعد 10 ثوانٍ...</p>
+        </div>
+
+        <!-- Sleek Monochrome Payload Selector -->
+        <div class="payload-selector" id="payloadSelector">
+          <span class="payload-label">الحمولة:</span>
+          <label class="payload-opt">
+            <input type="radio" name="payload" value="goldhen" checked />
+            <span class="payload-pill">GoldHEN</span>
+          </label>
+          <label class="payload-opt">
+            <input type="radio" name="payload" value="hen" />
+            <span class="payload-pill">PS4-HEN</span>
+          </label>
+        </div>
+      </main>
+
+      <!-- Footer with Copyright & Modal Button -->
+      <footer class="footer">
+        <p class="copyright">Starry Break © 2024 - جميع الحقوق محفوظة لـ نصرو بن عياد</p>
+        <button id="creditsBtn" class="credits-btn" type="button" aria-haspopup="dialog">
+          [ الحقوق والترخيص ]
+        </button>
+      </footer>
+    </div>
+
+    <!-- Glassmorphism Credits & Licensing Modal -->
+    <div id="creditsModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-card">
+        <div class="modal-header">
+          <h3 id="modalTitle" class="modal-title">الحقوق والترخيص المفتوح المصدر</h3>
+          <button id="closeModalBtn" class="modal-close" type="button" aria-label="إغلاق">&times;</button>
+        </div>
+
+        <div class="modal-body">
+          <div class="credit-block">
+            <h4 class="credit-category">المشروع الأصلي والواجهة (Project & Branding)</h4>
+            <p class="credit-row">
+              <strong>Starry Break:</strong> تطوير الواجهة والهوية الفنية بواسطة <strong>نصرو بن عياد (Nasro Ben Ayad)</strong>.
+            </p>
+            <p class="credit-row">
+              <strong>المشروع الأساسي:</strong> مبني على Afterglow Web بواسطة <strong>well0nez / m0zz</strong>.
+            </p>
+          </div>
+
+          <div class="credit-block">
+            <h4 class="credit-category">المساهمون التقنيون (Technical Contributors)</h4>
+            <ul class="credits-list">
+              <li>
+                <strong>raw13g (MIT License):</strong> تطوير <code>jb.js</code>، <code>ps4_offsets.js</code>، وهيكلية الاستضافة الأصلية.
+              </li>
+              <li>
+                <strong>aminegold0 (silverps4hen):</strong> إعادة بناء وهندسة مضيف الويب.
+              </li>
+              <li>
+                <strong>jordyidk (slopkit):</strong> أدوات معالجة الذاكرة البدائية <code>core.js</code>، <code>mem.js</code>، <code>int64.js</code>.
+              </li>
+              <li>
+                <strong>SiSTRo:</strong> حمولة GoldHEN.
+              </li>
+              <li>
+                <strong>al-azif, Pharaoh2k, TheFlow, ChendoChap, abc, LightningMods, @egycnq:</strong> سلسلة تطوير أبحاث وترقيعات النواة (Kernel Patch Lineage).
+              </li>
+            </ul>
+          </div>
+
+          <div class="credit-block license-notice">
+            <h4 class="credit-category">بيان التراخيص القانونية (Licenses)</h4>
+            <p class="license-text">
+              <strong>AGPLv3:</strong> يغطي <code>afterglow.js</code> ومجموعات الترقيع <code>patchset-*.bin</code>.
+            </p>
+            <p class="license-text">
+              <strong>MIT License:</strong> يغطي ملفات <code>raw13g</code> المرفقة.
+            </p>
+            <p class="disclaimer-text">
+              <strong>إخلاء مسؤولية:</strong> لا يتم إعادة توزيع أي كود برمجي مملوك لشركة سوني (Sony). هذا العمل مخصص لأبحاث الحماية والأمان على الأجهزة والعتاد المملوك شخصياً فقط.
+            </p>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button id="dismissModalBtn" class="modal-dismiss-btn" type="button">إغلاق</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Script Entry Point -->
+    <script src="launch.js"></script>
+  </body>
+</html>

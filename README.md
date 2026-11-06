@@ -1,99 +1,105 @@
-Starry Break ✦
-A clean, modern web interface with a monochrome cyber-anime vibe, built for PlayStation 4 consoles running firmware 13.52 and 14.00.
+# Starry Break ✦ ستاري بريك
 
-Fully redesigned and customized by Nasro Ben Ayad, based on the original Afterglow Web project.
+> واجهة ويب عصرية وأنيقة مستوحاة من طابع الأنمي الأحادي (Monochrome Cyber-Anime) لأجهزة PlayStation 4 على التحديثات **13.52** و **14.00**.
+> إعادة تصميم وتطوير كامل بواسطة **نصرو بن عياد (Nasro Ben Ayad)** مبني على مشروع *Afterglow Web*.
 
+---
 
-✦ Features
-- Monochrome Cyber-Anime Design: A bold black-and-white look with a custom anime background and glowing logo, complete with a smooth pulsing animation.
-- Full Arabic RTL Support: A fully right-to-left interface using carefully selected Arabic fonts — Tajawal and Cairo for the UI, with Amiri and Aref Ruqaa for decorative headings. Fallback fonts are included for offline use.
-- Interactive 5-Second Countdown: A circular SVG countdown that displays Arabic-Indic numerals (٥، ٤، ٣، ٢، ١). Once it finishes, you'll see the message "No limits. Just enjoy." along with an instant launch button.
-- Glassmorphism Credits Window: A clean, glass-style popup with detailed credits, licenses, developer information, and open-source acknowledgments.
-- Referrer Protection: Stops the PS4 browser from accidentally triggering the exploit again when restoring a previous browsing session.
-- Offline Support: Uses HTML5 AppCache to store the entire page in the PS4 browser after the first visit, so you can access it later without an internet connection.
-- Original Exploit Files Preserved: The original kernel and exploit files remain untouched, keeping the underlying memory handling and Memory Grooming routines intact.
+## ✦ المميزات البصرية والهندسية (Features)
 
-✦ Compatibility
-Supported consoles:
-- PlayStation 4 FAT
-- PlayStation 4 Slim
-- PlayStation 4 Pro
-Supported firmware versions:
-- 13.52
-- 14.00
-Supported payloads:
-- GoldHEN by SiSTRo — default option
-- PS4-HEN
+- **طابع فني أحادي (Monochrome Cyber-Anime):** تصميم باللونين الأبيض والأسود عالي التباين، مدمج مع صورة خلفية وشعار أنمي متوهج بتأثير نبض سلس.
+- **واجهة عربية متكاملة 100% (RTL Layout):** خطوط عربية فاخرة (Tajawal / Cairo لعناصر الواجهة، و Amiri / Aref Ruqaa للعناوين الفنية) مع دعم الخطوط البديلة عند العمل دون اتصال بالإنترنت.
+- **عداد تنازلي دائري تفاعلي (5s SVG Depletion):** مؤقت دائري ذكي يعتمد على الأرقام العربية المشرقية (٥، ٤، ٣، ٢، ١)، يعقبه ظهور العبارة الملهمة *"لا حدود... استمتع"* وزر التشغيل الفوري.
+- **نافذة حقوق زجاجية (Glassmorphism Modal):** توثيق شامل للتراخيص والمطورين والمصادر المفتوحة.
+- **حماية المرجع (Referrer Guard):** منع متصفح الكونسول من إعادة تنفيذ الاستغلال تلقائياً وبشكل غير مرغوب فيه عند استعادة الجلسة السابقة.
+- **تخزين مؤقت للعمل دون إنترنت (HTML5 AppCache):** إمكانية حفظ الصفحة بالكامل في ذاكرة متصفح PS4 بعد أول زيارة والعمل دون الحاجة لأي اتصال بالشبكة لاحقاً.
+- **استقرار كامل للثغرة:** الحفاظ على ملفات النواة والاستغلال الأصلية بنسبة 100% دون أي تعديل يمس دقة معالجة الذاكرة (Memory Grooming).
 
-✦ Project Structure
+---
+
+## ✦ متطلبات التشغيل والتوافق (Compatibility)
+
+- **أجهزة PlayStation 4 (FAT / Slim / Pro)**
+- **إصدارات النظام المدعومة:**
+  - Firmware `13.52`
+  - Firmware `14.00`
+- **الحمولات المدعومة (Payloads):**
+  - **GoldHEN** (بواسطة SiSTRo) &mdash; الخيار الافتراضي
+  - **PS4-HEN**
+
+---
+
+## ✦ بنية المشروع (File Structure)
+
+```text
 starry/
 ├── img/
-│   ├── logo.jpg           # Anime logo (Image 1)
-│   └── bg.jpg             # Dark background image (Image 2)
-├── index.html             # Main page and interactive Arabic RTL interface
-├── style.css              # Cyber-anime styling and visual effects
-├── launch.js               # Handles the countdown, caching, and page transitions
-├── jb.html                 # Styled exploit and console page
-├── jb.js                   # Host launcher (raw13g host primitive)
-├── core.js                 # Low-level memory utilities (slopkit)
-├── mem.js                  # Memory management and address reading
-├── int64.js                # 64-bit address calculations
-├── ps4_offsets.js          # Firmware-specific offsets
-├── afterglow.js            # Kernel exploit code
-├── patchset-1352.bin       # Kernel patches for firmware 13.52
-├── patchset-1400.bin       # Kernel patches for firmware 14.00
-├── goldhen.bin             # GoldHEN payload
-├── hen.bin                 # PS4-HEN payload
-├── cache.appcache          # Offline cache manifest for the PS4 browser
-├── make-manifest.sh        # Rebuilds the AppCache manifest on Linux/macOS
-├── make_manifest.py        # Rebuilds the AppCache manifest on Windows and other platforms
-├── CREDITS.md              # Legal notices, licenses, and contributor credits
-└── README.md               # Project documentation
+│   ├── logo.jpg           # شعار الأنمي (Image 1)
+│   └── bg.jpg             # خلفية الشاشة الداكنة (Image 2)
+├── index.html             # الصفحة الرئيسية والواجهة التفاعلية (Arabic RTL)
+├── style.css              # التنسيقات الفنية (Cyber-Anime CSS)
+├── launch.js              # إدارة العداد، الذاكرة المؤقتة، والانتقال
+├── jb.html                # صفحة تنفيذ الاستغلال والكونسول المنسقة
+├── jb.js                  # مشغل الاستضافة (raw13g host primitive)
+├── core.js                # أدوات معالجة الذاكرة البدائية (slopkit)
+├── mem.js                 # إدارة الذاكرة وقراءة العناوين
+├── int64.js               # حسابات العناوين 64 بت
+├── ps4_offsets.js         # إزاحات التحديثات المدعومة
+├── afterglow.js           # كود استغلال النواة
+├── patchset-1352.bin      # رقع النواة لتحديث 13.52
+├── patchset-1400.bin      # رقع النواة لتحديث 14.00
+├── goldhen.bin            # حمولة GoldHEN
+├── hen.bin                # حمولة PS4-HEN
+├── cache.appcache         # بيان التخزين المؤقت لمتصفح الكونسول
+├── make-manifest.sh       # أداة إعادة بناء الـ AppCache على Linux/Mac
+├── make_manifest.py       # أداة إعادة بناء الـ AppCache على Windows/Cross-platform
+├── CREDITS.md             # التوثيق القانوني وحقوق المساهمين
+└── README.md              # دليل المشروع
+```
 
+---
 
+## ✦ تشغيل واستضافة المشروع (Hosting Instructions)
 
-✦ Hosting the Project
-There are two ways to host Starry Break.
-1. Run a Local Server
-Use this option if your computer and PS4 are connected to the same network.
-
-With Python:
+### 1. الاستضافة عبر خادم محلي (Local Server):
+إذا كنت تستخدم جهاز كمبيوتر متصل بنفس الشبكة مع جهاز الـ PS4:
+```bash
+# باستخدام بايثون
 python -m http.server 8080
 
-
-Or on Linux/macOS:
+# أو باستخدام شيل سيرفر (Linux/macOS)
 ./serve.sh
+```
+ثم افتح متصفح الـ PS4 واكتب عنوان جهازك، على سبيل المثال: `http://192.168.1.50:8080`
 
+### 2. الاستضافة المجانية عبر GitHub Pages:
+- ارفع ملفات المشروع إلى مستودع GitHub خاص بك.
+- توجه إلى **Settings** > **Pages** واضبط النشر على الفرع `main` أو `gh-pages`.
+- افتح رابط GitHub Pages من متصفح PS4 وسيقوم النظام بتخزينه تلقائياً في الذاكرة المؤقتة.
 
-Once the server is running, open the PS4 browser and enter your computer's local IP address. For example:
+---
 
-http://192.168.1.50:8080
-2. Host It for Free with GitHub Pages
-You can also host the project online using GitHub Pages:
-1. Upload the project files to your own GitHub repository.
-2. Open Settings → Pages.
-3. Set the deployment source to either the main or gh-pages branch.
-4. Open your GitHub Pages link in the PS4 browser.
-The browser will then cache the page automatically for offline access.
+## ✦ إعادة بناء ملف التخزين المؤقت (Rebuilding `cache.appcache`)
 
-✦ Updating the Offline Cache (cache.appcache)
-Whenever you make changes to the interface files — such as index.html, style.css, launch.js, or anything inside the img/ folder — you'll need to rebuild cache.appcache.
+عند إجراء أي تعديل على ملفات الواجهة (`index.html`، `style.css`، `launch.js`، `img/*`)، **يجب بالضرورة** إعادة توليد ملف `cache.appcache`. بدون هذه الخطوة، سيستمر متصفح PS4 في تحميل النسخة القديمة من الذاكرة المخزنة!
 
-Otherwise, the PS4 browser may keep loading the old cached version instead of your latest changes.
-
-On Windows (using Python):
+**على بيئة Windows (باستخدام Python المدمج):**
+```bash
 python make_manifest.py
+```
 
-
-On Linux/macOS (using Bash):
+**على بيئة Linux / macOS (باستخدام Bash):**
+```bash
 chmod +x make-manifest.sh
 ./make-manifest.sh
+```
 
+---
 
+## ✦ الحقوق والتراخيص (Licenses & Acknowledgments)
 
-✦ Credits & Licenses
-- Starry Break was redesigned and customized by Nasro Ben Ayad.
-- Based on the original Afterglow Web project by researchers well0nez and m0zz.
-- The kernel code and patch sets are licensed under the GNU AGPLv3.
-- The original host files written by raw13g are licensed under the MIT License.
-- All original work remains credited to its respective authors. For the full list of credits and license details, check CREDITS.md.
+- تم بناء وتنسيق هذه النسخة بواسطة **نصرو بن عياد (Nasro Ben Ayad)**.
+- المشروع مبني على كود **Afterglow Web** للباحثين `well0nez` و `m0zz`.
+- يخضع كود النواة ومجموعات الترقيع لرخصة **GNU AGPLv3**.
+- تخضع ملفات المضيف الأصلية المكتوبة بواسطة `raw13g` لرخصة **MIT License**.
+- جميع الحقوق محفوظة لأصحابها وفق ما تم تفصيله في ملف [CREDITS.md](CREDITS.md).

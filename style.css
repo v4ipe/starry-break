@@ -95,7 +95,6 @@ body {
   overflow: hidden;
   border: 2px solid var(--color-white);
   box-shadow: var(--glow-soft);
-  animation: logoPulse 3.5s ease-in-out infinite;
   background: var(--color-black);
 }
 
